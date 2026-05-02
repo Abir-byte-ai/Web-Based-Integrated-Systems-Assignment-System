@@ -1,0 +1,588 @@
+/* Font -------------------------------------------------------------------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body, input, button, textarea, select {
+    font: 16px 'Roboto', sans-serif;
+}
+
+/* Layout ------------------------------------------------------------------ */
+
+body {
+    margin: 0;
+    height: 100vh;
+    display: grid;
+    grid: auto auto 1fr auto / auto;
+    background: rgb(221, 221, 221);
+}
+
+header, footer {
+    padding: 10px 50px;
+    background: #a5f4ff;
+}
+
+header { /* NEW */
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+header h1 {
+    flex: 1;
+    margin: 10px;
+    padding-left: 40px;
+    background: url(/images/logo.png) no-repeat left / 36px ;
+}
+
+header a {
+    color: inherit;
+    text-decoration: none;
+}
+
+header div { /* NEW */
+    text-align: right;
+}
+
+header img { /* NEW */
+    width: 36px;
+    height: 36px;
+    border: 1px solid #333;
+    border-radius: 5px;
+}
+
+#header{
+    font-size: 40px;
+    text-align: center; 
+    font-weight: bold;
+    text-align: center;
+}
+
+#indexheader{
+    font-size: 40px;
+    text-align: center;
+    font-weight: bold;
+    text-align: center;
+    
+}
+
+#mainphoto{
+    text-align: center;
+}
+
+nav {
+    background: rgb(221, 221, 221);
+    display: flex;
+}
+
+nav a {
+    padding: 15px 15px;
+    color: #000000;
+    background: #e4e4e4;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+nav a:hover {
+    background: #d3d3d3;
+    border: #000000;
+    border-bottom: 10%;
+}
+
+nav div { /* NEW */
+    flex: 1;
+
+}
+
+main {
+    padding: 20px 50px;
+}
+
+main h1 {
+    margin-top: 0;
+}
+
+/* Pager */
+nav.pager {
+    padding: 0;
+    background: transparent;
+}
+
+nav.pager a {
+    outline: 1px solid #333;
+}
+
+nav.pager a.active {
+    background: #333;
+}
+/* Table ------------------------------------------------------------------- */
+
+.table {
+    border-collapse: separate;
+    border-spacing: 0 8px;
+    width: 70%;
+    font-family: 'Arial', sans-serif;
+}
+
+.table th, .table td {
+    border: none;
+    padding: 12px 20px;
+    text-align: left;
+}
+
+.table th {
+    background: #3498db;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.table tr {
+    background-color: #f9f9f9;
+    transition: background-color 0.3s ease-in-out;
+}
+
+/* .table tr:hover td {
+    background-color: #f0f0f0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+} */
+
+.table td {
+    color: #333;
+    position: relative;
+    font-size: 16px;
+    padding: 12px 20px;
+    overflow: visible;
+}
+
+/* .table td:has(.popup) {
+    position: relative;
+} */
+
+.table .popup {
+    position: absolute;
+    top: 50%;
+    left: 105%;
+    transform: translateY(-50%);
+    z-index: 9999;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 8px 12px;
+    display: none;
+    white-space: nowrap;
+    max-width: 300px;
+    width: auto;
+    overflow: visible;
+}
+
+.table tr:hover .popup {
+    display: block;
+}
+
+/* .table td:last-child {
+    border-bottom-right-radius: 10px;
+} */
+
+/* .table td:first-child {
+    border-bottom-left-radius: 10px;
+} */
+
+/* .detail th {
+    text-align: left;
+    background: #eee;
+    color: #333;
+    padding: 12px;
+    font-weight: 600;
+    border-radius: 5px;
+} */
+/* Table Sorting------------------------------------------------------------ */
+.table th a {
+    color: inherit;
+    display: block;
+}
+
+.table th a.asc::after {
+    content: ' ▴';
+}
+
+.table th a.desc::after {
+    content: ' ▾';
+}
+
+
+
+/* Flash Message ----------------------------------------------------------- */
+
+#info {
+    position: fixed;
+    color: #fff;
+    background: #666;
+    border: 1px solid #333;
+    border-radius: 5px;
+    padding: 10px 20px;
+    left: 50%;
+    translate: -50% 0;
+    z-index: 999;
+
+    top: -100px;
+    opacity: 0;
+}
+
+#info:not(:empty) {
+    animation: fade 5s;
+}
+
+@keyframes fade {
+      0% { top: -100px; opacity: 0; }
+     10% { top:  100px; opacity: 1; }
+     90% { top:  100px; opacity: 1; }
+    100% { top: -100px; opacity: 0; }
+}
+
+/* Form -------------------------------------------------------------------- */
+
+label > * {
+    vertical-align: text-top;
+}
+
+
+.form {
+    display: grid;
+    /* grid: auto / auto auto auto; */
+    gap: 5px;
+    place-content: start;
+    /* place-items: center start; */
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 15px;
+    border: 10px solid #ccc;
+    
+}
+
+.form > label:not(:has(*)) {
+    font-weight: bold;
+    padding: 5px;
+    
+}
+
+.form > section {
+    grid-column: 1 / -1;
+}
+
+.err {
+    color: red;
+}
+
+#newtoshopping{
+    margin-left: 300px;
+}
+#haveanaccount{
+    margin-left: 320px;
+}
+
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container input {
+    width: 100%;
+    padding-right: 40px;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.password-container .toggle-password img {
+    width: 20px;
+    height: 20px;
+}
+
+
+/* Photo Upload ------------------------------------------------------------ */
+
+label.upload img {
+    display: block;
+    border: 1px solid #333;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Photo display at the product display ------------------------------------- */
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* Swiper Slider Styling */
+.swiper-container {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    margin: auto;
+    border: 1px solid #e0e0e0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    max-width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.swiper-slide img:hover {
+    transform: scale(1.05);
+}
+
+/* Thumbnail Navigation Styling */
+.thumbnail-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.thumbnail {
+    width: 80px;
+    height: 80px;
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: border 0.3s ease;
+    border-radius: 5px;
+}
+
+.thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.thumbnail.active,
+.thumbnail:hover {
+    border-color: #007BFF;
+}
+
+/* Adjustments for smaller screens */
+@media screen and (max-width: 768px) {
+    .swiper-container {
+        max-width: 100%;
+    }
+
+    .thumbnail-container {
+        flex-wrap: wrap;
+    }
+
+    .thumbnail {
+        width: 60px;
+        height: 60px;
+    }
+}
+
+/* Product LIst CSS ---------------------------------------------------- */
+    #category-buttons {
+        margin: 20px 0;
+        text-align: center;
+    }
+
+    #category-buttons button {
+        padding: 10px 20px;
+        margin: 5px;
+        font-size: 14px;
+        border: none;
+        background-color: #3498db;
+        color: #fff;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    #category-buttons button:hover {
+        background-color: #2980b9;
+    }
+
+    #products {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+    } 
+
+    .product {
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        width: 200px;
+        overflow: hidden;
+        position: relative;
+        text-align: left;
+        background-color: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .product:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .product img {
+        display: block;
+        width: 100%;
+        height: 150px;
+        cursor: pointer;
+        object-fit: cover;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .product .details {
+        padding: 15px;
+        background: #fff;
+    }
+
+    .product .details .name {
+        font-size: 18px;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 10px;
+        display: block;
+        line-height: 1.4;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .product .details .price {
+        font-size: 16px;
+        color: #27ae60;
+        font-weight: bold;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    .product .details .btn {
+        display: inline-block;
+        padding: 10px 15px;
+        background-color: #3498db;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        text-align: center;
+        text-decoration: none;
+        font-size: 14px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .product .details .btn:hover {
+        background-color: #2980b9;
+    }
+
+/* AFTER CHECKOUT DETAIL PAGE ------------------------------------------------------------ */
+/*                                                             COMMENT FOR FUTURE REFERING */
+.order_detail{
+    max-width: 30%;
+    padding: 20px;
+    background-color: #f9f9f9; 
+    border-radius: 12px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    font-family: 'Arial', sans-serif;
+    color: #333; 
+}
+
+.order_detail label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px; 
+    font-size: 14px;
+    color: #555;
+}
+
+.order_detail b, .order_detail div {
+    display: block;
+    padding: 10px 15px;
+    background-color: #fff; 
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    margin-bottom: 20px; 
+    font-size: 16px;
+    color: #333;
+}
+
+.order_detail b {
+    font-weight: 600; 
+}
+
+.order_detail div {
+    font-weight: normal;
+}
+
+.order_detail div:last-child {
+    margin-bottom: 0; 
+}
+/*rice sorting button*/
+#price-buttons {
+    margin: 20px 0;
+    text-align: center;
+}
+
+#price-buttons button {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 14px;
+    border: none;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#price-buttons button:hover {
+    background-color: #2980b9;
+}
+
+.wishlist-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.wishlist-button i {
+    font-size: 24px; /* Adjust the size of the star */
+    transition: color 0.3s ease;
+}
+
+.wishlist-button:hover i {
+    color: #FFA500; /* Change color on hover */
+}

@@ -1,0 +1,76 @@
+<form method="post" class="form" enctype="multipart/form-data">
+    <p><span id=header>USER REGISTER</span></p>
+    
+    <label for="email">EMAIL</label>
+    <?= html_text('email', 'maxlength="100"') ?>
+    <?= err('email') ?>
+    
+    <label for="password">PASSWORD</label>
+    <div class="password-container">
+    <?= html_password('password', 'maxlength="100" id="password"') ?>
+    <button type="button" id="togglePassword" class="toggle-password">
+        <img src="/images/eyeopen.png" alt="Show Password">
+    </button>
+</div>
+    <label for="password">CONFIRM PASSWORD</label>
+    <div class="password-container">
+    <?= html_password('confirm', 'maxlength="100" id="confirmPassword"') ?>
+    <button type="button" id="toggleConfirmPassword" class="toggle-password">
+        <img src="/images/eyeopen.png" alt="Show Password">
+    </button>
+</div>
+
+    <?= err('confirm') ?>
+
+    <label for="name">NAME</label>
+    <?= html_text('name', 'maxlength="100"') ?>
+    <?= err('name') ?>
+
+    <label for="photo">PHOTO</label>
+    <label class="upload" tabindex="0">
+        <?= html_file('photo', 'image/*', 'hidden') ?>
+        <img src="/images/photo.jpg">
+    </label>
+    <?= err('photo') ?>
+
+    <section>
+        <button>SUBMIT</button>
+        <button type="reset">RESET</button>
+    </section>
+    <p><span id=haveanaccount>Have an account?<a href="../user/login.php"> Log In</a></span></p>
+</form>
+
+<script>
+    // switch password visibility for PASSWORD
+    const togglePassword = document.getElementById('togglePassword');
+    const password = document.getElementById('password');
+    togglePassword.addEventListener('click', function (e) {
+        // Toggle the type attribute using JavaScript
+        const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+        password.setAttribute('type', type);
+
+        // Toggle the eye icon image
+        this.querySelector('img').src = type === 'password' ? '/images/eyeopen.png' : '/images/eyeclose.png';
+    });
+
+    // switch password visibility for CONFIRM PASSWORD
+    const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+    const confirmPassword = document.getElementById('confirmPassword');
+    toggleConfirmPassword.addEventListener('click', function (e) {
+        const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+        confirmPassword.setAttribute('type', type);
+
+        // Toggle the eye icon image
+        this.querySelector('img').src = type === 'password' ? '/images/eyeopen.png' : '/images/eyeclose.png';
+    });
+</script>
+
+
+
+            <!-- <form method="get" onsubmit="return confirm('Are you sure you want to change the status of this member?')">
+                <input type="hidden" name="id" value="<?= $s->id ?>">
+                <?php if ($s->status == 'Active'): ?>
+                    <button type="submit" name="action" value="block" class="btn btn-danger">Block</button>
+                <?php else: ?>
+                    <button type="submit" name="action" value="unblock" class="btn btn-success">Unblock</button>
+                <?php endif; ?> -->
