@@ -469,10 +469,10 @@ function get_mail() {
     $m = new PHPMailer(true);
     $m->isSMTP();
     $m->SMTPAuth = true;
-    $m->Host = 'smtp.gmail.com';
-    $m->Port = 587;
-    $m->Username = 'rsdassignment@gmail.com';
-    $m->Password = 'cpbw evyf nauo jfaz';
+    $m->Host = 'xyz.gmail.com';
+    $m->Port = 123;
+    $m->Username = 'xyz@gmail.com';
+    $m->Password = 'xyz';
     $m->CharSet = 'utf-8';
     $m->setFrom($m->Username, ' smarttech');
 
